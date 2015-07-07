@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+   root 'users#new'
+
+   get 'login' => 'sessions#new'
+   post 'login' => 'sessions#create'
+   get 'loggedin' => 'sessions#loggedin'
+   delete 'session' => 'sessions#destroy'
+
+   resources :users
+
+   resources :items
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,7 +24,10 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  namespace :api do
 
+
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do
